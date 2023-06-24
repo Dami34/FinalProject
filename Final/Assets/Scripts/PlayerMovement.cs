@@ -4,43 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Rigidbody rb; // Rigidbody variable
+    [SerializeField] float movementSpeed = 6f; // Player movement speed
+    [SerializeField] float jumpF = 5f; // Force of jump
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Get movement inputs
+        float horizontalIn = Input.GetAxis("Horizontal");
+        float verticalIn = Input.GetAxis("Vertical");
+
+        // Let player move around
+        rb.velocity = new Vector3(horizontalIn * movementSpeed, rb.velocity.y, verticalIn * movementSpeed);
+
         // Let player jump
-        if(Input.GetKeyDown("space"))
+        if(Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 5, 0);
-        }
-
-        // Move player up
-        if(Input.GetKey("up"))
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 5);
-        }
-
-        // Move player right
-        if(Input.GetKey("right"))
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(5, 0, 0);
-        }
-
-        // Move player down
-        if(Input.GetKey("down"))
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -5);
-        }
-
-        // Move player right
-        if(Input.GetKey("left"))
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(-5, 0, 0);
+            rb.velocity = new Vector3(rb.velocity.x, jumpF, rb.velocity.z);
         }
     }
 }
