@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb; // Rigidbody variable
     [SerializeField] float movementSpeed = 6f; // Player movement speed
     [SerializeField] float jumpF = 5f; // Force of jump
+    [SerializeField] Transform groundCheck; // Used to check if player's on ground
+    [SerializeField] LayerMask ground; // Helps passes layers
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +27,15 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(horizontalIn * movementSpeed, rb.velocity.y, verticalIn * movementSpeed);
 
         // Let player jump
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && isGround())
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpF, rb.velocity.z);
         }
+    }
+
+    // Method to check if player is on the ground
+    bool isGround()
+    {
+        return Physics.CheckSphere(groundCheck.position, .1f, ground);
     }
 }
