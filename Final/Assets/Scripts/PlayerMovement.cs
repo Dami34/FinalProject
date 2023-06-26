@@ -27,7 +27,23 @@ public class PlayerMovement : MonoBehaviour
         // Let player jump
         if(Input.GetButtonDown("Jump") && isGround())
         {
-            rb.velocity = new Vector3(rb.velocity.x, jumpF, rb.velocity.z);
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        // Jump player
+        rb.velocity = new Vector3(rb.velocity.x, jumpF, rb.velocity.z);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Destroy enemy if jumped on
+        if(collision.gameObject.CompareTag("Enemy top"))
+        {
+            Destroy(collision.transform.parent.gameObject);
+            Jump();
         }
     }
 
