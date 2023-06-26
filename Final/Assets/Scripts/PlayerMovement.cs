@@ -10,13 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck; // Used to check if player's on ground
     [SerializeField] LayerMask ground; // Helps passes layers
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Get movement inputs
@@ -33,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Method to check if player is on the ground
     bool isGround()
     {
+        // Check and return if player is on the ground
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
     }
 }
