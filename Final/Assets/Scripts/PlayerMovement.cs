@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpF = 5f; // Force of jump
     [SerializeField] Transform groundCheck; // Used to check if player's on ground
     [SerializeField] LayerMask ground; // Helps passes layers
+    [SerializeField] AudioSource jumpSound; // Variable to play audio when player jumps
 
     void Start()
     {
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Jump player
         rb.velocity = new Vector3(rb.velocity.x, jumpF, rb.velocity.z);
+        // Play jump sound
+        jumpSound.Play();
     }
 
     void OnCollisionEnter(Collision collision)

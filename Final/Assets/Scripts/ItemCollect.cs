@@ -6,16 +6,18 @@ using TMPro;
 public class ItemCollect : MonoBehaviour
 {
     int coinsNum = 0; // Keeps track of coins collected
-    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI coinText; // Variable to display coin score
+    [SerializeField] AudioSource collectSound;
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if player collides with coin and destroys it; then adds to coin score
+        // Check if player collides with coin and destroys it
         if(other.gameObject.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
-            coinsNum++;
-            coinText.text = "Coins: " + coinsNum;
+            coinsNum++; // Add to coin score
+            coinText.text = "Coins: " + coinsNum; // Display Score
+            collectSound.Play(); // Play sound effect
         }
     }
 }

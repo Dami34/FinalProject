@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     bool dead = false; // Variable for if player is dead or not
+    [SerializeField] AudioSource deathSound; // Sound effect to play when player dies
 
     void Update()
     {
@@ -37,6 +38,8 @@ public class PlayerLife : MonoBehaviour
         Invoke(nameof(Reload), 1.3f);
         // Set death to true
         dead = true;
+        // Play death sound
+        deathSound.Play();
     }
 
     void Reload()
