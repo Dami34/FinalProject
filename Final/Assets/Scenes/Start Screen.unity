@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 1738362267}
   - component: {fileID: 1738362266}
   - component: {fileID: 1738362265}
+  - component: {fileID: 1738362268}
   m_Layer: 5
   m_Name: Options Button
   m_TagString: Untagged
@@ -1467,7 +1468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1738362266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1738362268}
+        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+        m_MethodName: GoToOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1738362266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,3 +1519,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738362262}
   m_CullTransparentMesh: 1
+--- !u!114 &1738362268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738362262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1775e9fb75c7c541b7a0c03102f0dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
