@@ -7,7 +7,7 @@ public class ItemCollect : MonoBehaviour
 {
     int coinsNum = 0; // Keeps track of coins collected
     [SerializeField] TextMeshProUGUI coinText; // Variable to display coin score
-    [SerializeField] AudioSource collectSound;
+    [SerializeField] AudioSource collectSound; // Variable for the coin collecting sound effect
 
     void OnTriggerEnter(Collider other)
     {
